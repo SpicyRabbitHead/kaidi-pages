@@ -7,6 +7,8 @@ export interface Member {
   width: number;
   height: number;
   category: MemberCategory;
+  position: string;
+  tenure: string;
 }
 
 const members: Member[] = [
@@ -17,6 +19,8 @@ const members: Member[] = [
     width: 800,
     height: 1120,
     category: 'phd',
+    position: 'PhD Student',
+    tenure: 'Joined 2025',
   },
   {
     name: '汪志远',
@@ -25,6 +29,8 @@ const members: Member[] = [
     width: 800,
     height: 1000,
     category: 'master',
+    position: "Master's Student",
+    tenure: 'Joined 2025',
   },
   {
     name: '黄宇',
@@ -33,6 +39,8 @@ const members: Member[] = [
     width: 800,
     height: 800,
     category: 'alumni',
+    position: 'Ph.D.',
+    tenure: '2021–2025',
   },
   {
     name: '林绍卿',
@@ -41,6 +49,8 @@ const members: Member[] = [
     width: 800,
     height: 800,
     category: 'phd',
+    position: 'PhD Student',
+    tenure: 'Joined 2025',
   },
   {
     name: '甘江璋',
@@ -49,6 +59,8 @@ const members: Member[] = [
     width: 800,
     height: 1120,
     category: 'postdoc',
+    position: 'Postdoctoral Researcher',
+    tenure: 'Joined 2026',
   },
 ];
 

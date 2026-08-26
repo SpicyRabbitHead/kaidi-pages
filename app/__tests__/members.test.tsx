@@ -36,6 +36,15 @@ describe('members page', () => {
       expect(link).toHaveAttribute('href', member.homepage);
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      const memberCard = [
+        ...group.querySelectorAll<HTMLElement>('.member-card'),
+      ].find((candidate) => candidate.textContent?.includes(member.name));
+      expect(memberCard).toBeDefined();
+      expect(
+        within(memberCard as HTMLElement).getByText(
+          member.position + ' · ' + member.tenure,
+        ),
+      ).toBeInTheDocument();
     });
   });
 

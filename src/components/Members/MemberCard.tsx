@@ -5,10 +5,9 @@ import { withBasePath } from '@/lib/utils';
 
 interface MemberCardProps {
   member: Member;
-  role: string;
 }
 
-export default function MemberCard({ member, role }: MemberCardProps) {
+export default function MemberCard({ member }: MemberCardProps) {
   return (
     <article className="member-card">
       <Image
@@ -25,7 +24,9 @@ export default function MemberCard({ member, role }: MemberCardProps) {
             {member.name}
           </a>
         </h3>
-        <p className="member-card-meta">{role}</p>
+        <p className="member-card-meta">
+          {member.position} · {member.tenure}
+        </p>
         <a
           className="member-card-homepage"
           href={member.homepage}
