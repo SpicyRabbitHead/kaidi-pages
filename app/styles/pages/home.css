@@ -57,7 +57,11 @@
 }
 
 .hero-open-positions {
+<<<<<<< HEAD
+  max-width: 62ch;
+=======
   max-width: 46ch;
+>>>>>>> origin/main
   margin: 0 0 2rem;
   padding-top: 1rem;
   border-top: var(--rule) solid var(--color-border);

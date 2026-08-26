@@ -28,7 +28,7 @@ describe('Navigation', () => {
       screen.getByRole('link', { name: /kaidi xu.*home/i }),
     ).toHaveAttribute('href', '/');
   });
-  it('renders academic primary routes', () => {
+  it('renders primary routes including all news', () => {
     render(<Navigation />);
     for (const label of [
       'About',
@@ -36,10 +36,11 @@ describe('Navigation', () => {
       'Group',
       'Teaching',
       'Contact',
+      'All News',
     ])
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument();
     expect(
-      screen.queryByRole('link', { name: 'News' }),
+      screen.queryByRole('link', { name: 'Stats' }),
     ).not.toBeInTheDocument();
   });
 });
