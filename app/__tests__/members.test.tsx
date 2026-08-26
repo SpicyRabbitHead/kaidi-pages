@@ -5,15 +5,34 @@ import members from '@/data/members';
 import MembersPage from '../members/page';
 
 describe('members page', () => {
-  it('renders every member as an external homepage link', () => {
+  it('renders every member in the correct identity group', () => {
     const { container } = render(<MembersPage />);
-    const links = container.querySelectorAll('.member-card-link');
+    const sections = container.querySelectorAll('.members-section');
 
-    expect(links).toHaveLength(members.length);
+    expect(sections).toHaveLength(4);
+    expect(
+      screen.getByRole('heading', { name: 'Postdocs' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'PhD Students' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: "Master's Students" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Alumni' })).toBeInTheDocument();
+
+    const expectedGroups = {
+      postdoc: 'Postdocs',
+      phd: 'PhD Students',
+      master: "Master's Students",
+      alumni: 'Alumni',
+    } as const;
+
     members.forEach((member) => {
-      const link = screen.getByRole('link', {
-        name: member.name + "'s homepage",
+      const group = screen.getByRole('region', {
+        name: expectedGroups[member.category],
       });
+      const link = within(group).getByRole('link', { name: member.name });
       expect(link).toHaveAttribute('href', member.homepage);
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
@@ -24,9 +43,14 @@ describe('members page', () => {
     const { container } = render(<MembersPage />);
     const cards = container.querySelectorAll<HTMLElement>('.member-card');
 
-    cards.forEach((card, index) => {
+    members.forEach((member) => {
+      const card = [...cards].find((candidate) =>
+        candidate.textContent?.includes(member.name),
+      );
+
+      expect(card).toBeDefined();
       expect(
-        within(card).getByAltText('Portrait of ' + members[index].name),
+        within(card as HTMLElement).getByAltText('Portrait of ' + member.name),
       ).toBeInTheDocument();
     });
   });
