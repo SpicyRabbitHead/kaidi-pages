@@ -1,0 +1,198 @@
+/* ========================================
+   MEMBERS PAGE
+   A portrait-led directory of personal homepages.
+   ======================================== */
+
+.members-page {
+  padding-bottom: 2rem;
+}
+
+.members-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+  border-top: var(--rule-strong) solid var(--color-fg-bold);
+}
+
+.members-kicker {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.members-header .page-title {
+  margin: 0;
+}
+
+.members-intro {
+  max-width: 30ch;
+  margin: 0 0 0.35rem auto;
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  color: var(--color-fg-light);
+  text-wrap: pretty;
+}
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.member-card {
+  min-width: 0;
+  border: var(--rule) solid var(--color-border);
+  background: var(--color-bg);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.member-card:hover,
+.member-card:has(.member-card-link:focus-visible) {
+  border-color: var(--color-fg-bold);
+}
+
+.member-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  background-image: none;
+}
+
+.member-card-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.member-card-image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-surface-subtle);
+}
+
+.member-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) contrast(1.04);
+  transition: filter var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+}
+
+.member-card:hover .member-card-image img,
+.member-card-link:focus-visible .member-card-image img {
+  filter: grayscale(0) contrast(1);
+  transform: scale(1.015);
+}
+
+@media (hover: none) {
+  .member-card-image img {
+    filter: none;
+  }
+}
+
+.member-card-content {
+  padding: 1rem 1.125rem 1.125rem;
+}
+
+.member-card-heading {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.member-card-index,
+.member-card-homepage {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.member-card-index {
+  color: var(--color-fg-light);
+  font-variant-numeric: tabular-nums;
+}
+
+.member-card-name {
+  min-width: 0;
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-tight);
+  overflow-wrap: anywhere;
+}
+
+.member-card-affordance {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  opacity: 0.65;
+  transition: opacity var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.member-card:hover .member-card-affordance,
+.member-card-link:focus-visible .member-card-affordance {
+  opacity: 1;
+  transform: translate(1px, -1px);
+}
+
+.member-card-homepage {
+  display: block;
+  margin: 0.55rem 0 0 2.2rem;
+  color: var(--color-fg-light);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.member-card:hover .member-card-homepage,
+.member-card-link:focus-visible .member-card-homepage {
+  color: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .members-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .members-header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .members-intro {
+    margin: 0;
+    font-size: var(--text-md);
+  }
+
+  .members-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .member-card-image {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .member-card,
+  .member-card-image img,
+  .member-card-affordance,
+  .member-card-homepage {
+    transition: none;
+  }
+}
