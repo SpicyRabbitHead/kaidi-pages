@@ -16,6 +16,13 @@ const MEMBERS_URL = SITE_URL + '/members/';
 const MEMBERS_DESCRIPTION =
   'A directory of members, with links to their personal homepages.';
 
+const groups = [
+  { key: 'postdoc', title: 'Postdocs', role: 'Postdoctoral Researcher' },
+  { key: 'phd', title: 'PhD Students', role: 'PhD Student' },
+  { key: 'master', title: "Master's Students", role: "Master's Student" },
+  { key: 'alumni', title: 'Alumni', role: 'Alumni' },
+] as const;
+
 export const metadata: Metadata = createPageMetadata({
   title: 'Members',
   description: MEMBERS_DESCRIPTION,
@@ -41,22 +48,37 @@ export default function MembersPage() {
       />
       <section className="members-page" aria-labelledby="members-title">
         <header className="members-header">
-          <div>
-            <span className="members-kicker">People / 05</span>
-            <h1 id="members-title" className="page-title">
-              Members
-            </h1>
-          </div>
-          <p className="members-intro">
-            A small constellation of people and the places they build on the
-            web.
-          </p>
+          <h1 id="members-title" className="page-title">
+            Members
+          </h1>
         </header>
-        <div className="members-grid">
-          {members.map((member, index) => (
-            <MemberCard key={member.homepage} member={member} index={index} />
-          ))}
-        </div>
+
+        {groups.map((group) => {
+          const groupMembers = members.filter(
+            (member) => member.category === group.key,
+          );
+
+          if (groupMembers.length === 0) return null;
+
+          return (
+            <section
+              className="members-section"
+              aria-labelledby={'members-' + group.key}
+              key={group.key}
+            >
+              <h2 id={'members-' + group.key}>{group.title}</h2>
+              <div className="members-list">
+                {groupMembers.map((member) => (
+                  <MemberCard
+                    key={member.homepage}
+                    member={member}
+                    role={group.role}
+                  />
+                ))}
+              </div>
+            </section>
+          );
+        })}
       </section>
     </PageWrapper>
   );
