@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /api
+
+Sitemap: https://spicyrabbithead.github.io/kaidi-pages/sitemap.xml
