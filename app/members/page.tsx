@@ -17,10 +17,10 @@ const MEMBERS_DESCRIPTION =
   'A directory of members, with links to their personal homepages.';
 
 const groups = [
-  { key: 'postdoc', title: 'Postdocs', role: 'Postdoctoral Researcher' },
-  { key: 'phd', title: 'PhD Students', role: 'PhD Student' },
-  { key: 'master', title: "Master's Students", role: "Master's Student" },
-  { key: 'alumni', title: 'Alumni', role: 'Alumni' },
+  { key: 'postdoc', title: 'Postdocs' },
+  { key: 'phd', title: 'PhD Students' },
+  { key: 'master', title: "Master's Students" },
+  { key: 'alumni', title: 'Alumni' },
 ] as const;
 
 export const metadata: Metadata = createPageMetadata({
@@ -69,11 +69,7 @@ export default function MembersPage() {
               <h2 id={'members-' + group.key}>{group.title}</h2>
               <div className="members-list">
                 {groupMembers.map((member) => (
-                  <MemberCard
-                    key={member.homepage}
-                    member={member}
-                    role={group.role}
-                  />
+                  <MemberCard key={member.homepage} member={member} />
                 ))}
               </div>
             </section>
