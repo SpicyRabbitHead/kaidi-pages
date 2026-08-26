@@ -5,7 +5,8 @@
 import profile from '@/data/profile.json';
 
 // Site configuration
-export const SITE_URL = 'https://mldangelo.com';
+export const SITE_URL = 'https://spicyrabbithead.github.io/kaidi-pages';
+export const SITE_BASE_PATH = '/kaidi-pages';
 export const AUTHOR_NAME = profile.name;
 export const TWITTER_HANDLE = '@dangelosaurus';
 /**
@@ -45,6 +46,12 @@ export const PROJECT_IMAGE = {
 
 // Skill competency
 export const MAX_COMPETENCY = 5;
+
+export function withBasePath(path: string): string {
+  if (!path.startsWith('/') || path.startsWith('//')) return path;
+  if (path === SITE_BASE_PATH || path.startsWith(SITE_BASE_PATH + '/') ) return path;
+  return SITE_BASE_PATH + path;
+}
 
 /**
  * Formats a date string to a human-readable format.

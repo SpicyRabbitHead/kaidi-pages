@@ -2,6 +2,7 @@
 
 import Markdown from 'markdown-to-jsx';
 import Image from 'next/image';
+import { SITE_BASE_PATH } from '@/lib/utils';
 
 interface PostContentProps {
   content: string;
@@ -44,7 +45,7 @@ export default function PostContent({
 
               return (
                 <Image
-                  src={src}
+                  src={src.startsWith('/') ? `${SITE_BASE_PATH}${src}` : src}
                   alt={alt || ''}
                   width={width}
                   height={height}

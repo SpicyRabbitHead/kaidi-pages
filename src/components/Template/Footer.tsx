@@ -23,7 +23,7 @@ export default function Footer() {
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
-                href="https://github.com/mldangelo/personal-site"
+                href="https://github.com/SpicyRabbitHead/kaidi-pages"
                 target="_blank"
                 rel="noopener noreferrer"
               >
