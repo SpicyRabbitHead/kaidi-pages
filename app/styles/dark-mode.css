@@ -59,13 +59,9 @@
   background: var(--color-bg-alt);
 }
 
-/* Portrait — soften the white field for dark mode.
-   Scoped with :where() so it carries zero specificity and cannot override
-   the per-context treatments in home.css and footer.css. Unscoped, this rule
-   won on source order and silently reduced the hero portrait to
-   brightness(0.85), discarding its greyscale entirely. */
+/* Portrait colors stay unchanged in dark mode. */
 [data-theme='dark'] :where(.theme-portrait) img {
-  filter: brightness(0.85);
+  filter: none;
 }
 
 /* Course rows, skill tags, and the contact readout are all transparent and
