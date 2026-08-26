@@ -36,7 +36,7 @@ function getPostImage(post: Post): PostImage | undefined {
   return {
     ...readImageSize(post.image),
     alt: post.imageAlt,
-    url: `${SITE_URL}${post.image}`, 
+    url: `${SITE_URL}${post.image}`,
   };
 }
 
