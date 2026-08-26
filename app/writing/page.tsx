@@ -126,7 +126,7 @@ export default function WritingPage() {
           <div className="writing-header-row">
             <h1 className="page-title">Writing</h1>
             <a
-              href="/feed.xml"
+              href="/kaidi-pages/feed.xml"
               className="writing-rss-link"
               title="RSS Feed"
               aria-label="RSS Feed"

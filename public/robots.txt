@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /api
 
-Sitemap: https://mldangelo.com/sitemap.xml
+Sitemap: https://spicyrabbithead.github.io/kaidi-pages/sitemap.xml

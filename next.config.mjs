@@ -3,6 +3,7 @@ import bundleAnalyzer from '@next/bundle-analyzer';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  basePath: '/kaidi-pages',
 
   // Allow dev server access from local network (mobile testing, etc.)
   allowedDevOrigins: ['http://192.168.*.*:3000'],
