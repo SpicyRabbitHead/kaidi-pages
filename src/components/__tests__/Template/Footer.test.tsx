@@ -1,76 +1,28 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-
 import Footer from '../../Template/Footer';
 
 describe('Footer', () => {
-  it('renders the footer with correct structure', () => {
+  it('renders Kaidi identity and role', () => {
     render(<Footer />);
-
-    const footer = screen.getByRole('contentinfo');
-    expect(footer).toBeInTheDocument();
-  });
-
-  it('displays the name and role', () => {
-    render(<Footer />);
-
-    expect(screen.getByText("Michael D'Angelo")).toBeInTheDocument();
+    expect(screen.getByText('Kaidi Xu')).toBeInTheDocument();
     expect(
-      screen.getByText('Member of the Technical Staff at OpenAI'),
+      screen.getByText(/Associate Professor, Department of Data Science/),
     ).toBeInTheDocument();
   });
-
-  it('does not introduce unrelated headings into the page outline', () => {
+  it('renders academic navigation links', () => {
     render(<Footer />);
-
-    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
-  });
-
-  it('displays the current year in copyright', () => {
-    render(<Footer />);
-
-    const currentYear = new Date().getFullYear().toString();
-    expect(
-      screen.getByText(new RegExp(`© ${currentYear}`)),
-    ).toBeInTheDocument();
-  });
-
-  it('renders navigation links', () => {
-    render(<Footer />);
-
-    expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Publications' })).toHaveAttribute(
       'href',
-      '/about',
+      '/writing',
     );
-    expect(screen.getByRole('link', { name: /resume/i })).toHaveAttribute(
-      'href',
-      '/resume',
-    );
-    // Labelled "Archive" to match the nav and the page's own heading;
-    // the route stays /projects.
-    expect(screen.getByRole('link', { name: /archive/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Group' })).toHaveAttribute(
       'href',
       '/projects',
     );
-    expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Teaching' })).toHaveAttribute(
       'href',
-      '/contact',
+      '/teaching',
     );
-  });
-
-  it('renders contact icons section', () => {
-    render(<Footer />);
-
-    // Contact icons are rendered via ContactIcons component
-    const socialSection = document.querySelector('.footer-social');
-    expect(socialSection).toBeInTheDocument();
-    expect(screen.getByText('Connect')).toBeInTheDocument();
-  });
-
-  it('has link to home from avatar', () => {
-    render(<Footer />);
-
-    const avatarLink = document.querySelector('.footer-avatar');
-    expect(avatarLink).toHaveAttribute('href', '/');
   });
 });

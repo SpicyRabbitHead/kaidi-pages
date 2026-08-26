@@ -15,8 +15,7 @@ import {
 import { AUTHOR_NAME } from '@/lib/utils';
 
 const ABOUT_URL = `${SITE_URL}/about/`;
-
-const ABOUT_DESCRIPTION = `Learn about ${AUTHOR_NAME} - ${profile.role} at ${profile.employer} and builder across AI, security, and infrastructure.`;
+const ABOUT_DESCRIPTION = `Biography of ${AUTHOR_NAME}, ${profile.role} at ${profile.employer}, researching trustworthy AI.`;
 
 export const metadata: Metadata = createPageMetadata({
   title: 'About',
@@ -43,7 +42,7 @@ export default function AboutPage() {
       />
       <section className="about-page">
         <header className="about-header">
-          <h1 className="page-title">About</h1>
+          <h1 className="page-title">Biography</h1>
         </header>
         <AboutContent markdown={aboutMarkdown} />
       </section>

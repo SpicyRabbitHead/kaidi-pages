@@ -20,25 +20,13 @@ describe('createHeadingId', () => {
   ])('creates stable ids for %s', (title, expected) => {
     expect(createHeadingId(title)).toBe(expected);
   });
-
   it('falls back when a heading has no anchor-safe characters', () => {
     expect(createHeadingId('!!!')).toBe('section');
   });
-
   it('keeps the real about section ids stable', () => {
-    expect(
-      getAboutSectionTitles(aboutMarkdown).map((title) => [
-        title,
-        createHeadingId(title),
-      ]),
-    ).toEqual([
-      ['Some History', 'some-history'],
-      ['I Like', 'i-like'],
-      ['Travel / Geography', 'travel-geography'],
-      ['Fun Facts', 'fun-facts'],
-      ['I Dream Of', 'i-dream-of'],
-      ['Websites from People I Admire', 'websites-from-people-i-admire'],
-    ]);
+    const titles = getAboutSectionTitles(aboutMarkdown);
+    expect(titles).toEqual(['Open Positions']);
+    expect(titles.map(createHeadingId)).toEqual(['open-positions']);
   });
 });
 
@@ -58,10 +46,8 @@ describe('createUniqueHeadingIds', () => {
       'section-2',
     ]);
   });
-
   it('produces unique, non-empty ids for the real about headings', () => {
     const ids = createUniqueHeadingIds(getAboutSectionTitles(aboutMarkdown));
-
     expect(ids.every((id) => id.length > 0)).toBe(true);
     expect(new Set(ids).size).toBe(ids.length);
   });

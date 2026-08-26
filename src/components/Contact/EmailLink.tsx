@@ -100,7 +100,7 @@ function animationReducer(
 
       if (nextIdx === messages.length) {
         if (action.loopMessage) {
-          return startOf(0);
+          return startOf(1);
         }
 
         // Completion is recorded in `idx`, not only in `isActive`. Leaving it

@@ -1,12 +1,7 @@
 'use client';
 
 import useLiveAge from '@/hooks/useLiveAge';
-import {
-  AGE_PRECISION_FULL,
-  agePlaceholder,
-  COUNTRIES_VISITED,
-  CURRENT_CITY,
-} from '@/lib/telemetry';
+import { AGE_PRECISION_FULL, agePlaceholder } from '@/lib/telemetry';
 
 import type { StatData } from '../../components/Stats/types';
 
@@ -35,13 +30,13 @@ const data: StatData[] = [
   {
     key: 'countries',
     label: 'Countries visited',
-    value: COUNTRIES_VISITED,
+    value: 53,
     link: 'https://www.google.com/maps/d/embed?mid=1iBBTscqateQ93pWFVfHCUZXoDu8&z=2',
   },
   {
     key: 'location',
     label: 'Current city',
-    value: CURRENT_CITY,
+    value: 'New York, NY',
   },
 ];
 
