@@ -49,7 +49,8 @@ export const MAX_COMPETENCY = 5;
 
 export function withBasePath(path: string): string {
   if (!path.startsWith('/') || path.startsWith('//')) return path;
-  if (path === SITE_BASE_PATH || path.startsWith(SITE_BASE_PATH + '/') ) return path;
+  if (path === SITE_BASE_PATH || path.startsWith(SITE_BASE_PATH + '/'))
+    return path;
   return SITE_BASE_PATH + path;
 }
 
