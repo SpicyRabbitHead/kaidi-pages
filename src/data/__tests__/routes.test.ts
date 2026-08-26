@@ -41,6 +41,7 @@ describe('routes', () => {
     expect(paths).not.toContain('/resume');
     expect(paths).toContain('/projects');
     expect(paths).toContain('/contact');
+    expect(paths).toContain('/news');
   });
 
   it('has unique paths', () => {
@@ -70,6 +71,6 @@ describe('routes', () => {
       .filter((route) => route.primary === false)
       .map((route) => route.path);
 
-    expect(secondaryPaths).toEqual(['/news', '/stats']);
+    expect(secondaryPaths).toEqual(['/stats']);
   });
 });

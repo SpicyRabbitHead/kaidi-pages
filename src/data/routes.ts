@@ -14,7 +14,7 @@ const routes: Route[] = [
   { label: 'Group', path: '/projects' },
   { label: 'Teaching', path: '/teaching' },
   { label: 'Contact', path: '/contact' },
-  { label: 'News', path: '/news', primary: false },
+  { label: 'All News', path: '/news' },
   { label: 'Stats', path: '/stats', primary: false },
 ];
 
