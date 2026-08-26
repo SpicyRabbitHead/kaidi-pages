@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import profile from '@/data/profile.json';
+import { recruiting } from '@/data/recruiting';
 
 import ThemePortrait from './ThemePortrait';
 
@@ -34,6 +35,20 @@ export default function Hero() {
             , including formal verification, practical adversarial attacks, and
             uncertainty quantification.
           </p>
+          <section
+            className="hero-open-positions"
+            aria-labelledby="hero-open-positions-title"
+          >
+            <h2 id="hero-open-positions-title">{recruiting.title}</h2>
+            <p>
+              I'm seeking highly motivated students with a strong background in
+              deep learning, offering full financial support. Interested
+              candidates are strongly encouraged to contact me via{' '}
+              <a href="mailto:kaidixu@cityu.edu.hk">email</a>, including a
+              resume, publication list, and transcripts. Two postdocs and five
+              PhD positions are available for Spring/Fall 2027.
+            </p>
+          </section>
           <div className="hero-cta">
             <Link href="/about/" className="button">
               Biography

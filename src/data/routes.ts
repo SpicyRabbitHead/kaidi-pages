@@ -10,7 +10,6 @@ export interface Route {
 const routes: Route[] = [
   { index: true, label: AUTHOR_NAME, path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Academic CV', path: '/resume' },
   { label: 'Publications', path: '/writing' },
   { label: 'Group', path: '/projects' },
   { label: 'Teaching', path: '/teaching' },

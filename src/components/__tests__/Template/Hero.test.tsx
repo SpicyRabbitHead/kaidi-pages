@@ -18,6 +18,13 @@ describe('Hero', () => {
   it('describes trustworthy AI research and primary CTAs', () => {
     render(<Hero />);
     expect(screen.getByText(/Trustworthy AI/)).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Open Positions' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'email' })).toHaveAttribute(
+      'href',
+      'mailto:kaidixu@cityu.edu.hk',
+    );
     expect(screen.getByRole('link', { name: /biography/i })).toHaveAttribute(
       'href',
       '/about',

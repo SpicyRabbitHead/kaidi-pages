@@ -1,9 +1,8 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
 import { aboutMarkdown } from '@/data/about';
-import { createHeadingId } from '@/lib/anchors';
 import AboutContent from '../Sections';
 
 function getActualSectionTitles(markdown: string) {
@@ -16,13 +15,9 @@ describe('AboutContent', () => {
   it('renders intro copy without an Intro heading', () => {
     render(
       <AboutContent
-        markdown={`# Intro
-
-Hello from the intro.
-
-# Some History
-
-- Built a thing.`}
+        markdown={
+          '# Intro\n\nHello from the intro.\n\n# Some History\n\n- Built a thing.'
+        }
       />,
     );
 
@@ -38,17 +33,9 @@ Hello from the intro.
   it('assigns section variants for compact and links sections', () => {
     const { container } = render(
       <AboutContent
-        markdown={`# Intro
-
-Lead paragraph.
-
-# I Like
-
-- Running
-
-# Websites from People I Admire
-
-- [Example](https://example.com)`}
+        markdown={
+          '# Intro\n\nLead paragraph.\n\n# I Like\n\n- Running\n\n# Websites from People I Admire\n\n- [Example](https://example.com)'
+        }
       />,
     );
 
@@ -62,17 +49,9 @@ Lead paragraph.
   it('adds stable heading ids for deep links', () => {
     render(
       <AboutContent
-        markdown={`# Intro
-
-Lead paragraph.
-
-# Some History
-
-- Built a thing.
-
-# Open Positions
-
-- Went somewhere.`}
+        markdown={
+          '# Intro\n\nLead paragraph.\n\n# Some History\n\n- Built a thing.\n\n# Open Positions\n\n- Went somewhere.'
+        }
       />,
     );
 
@@ -84,70 +63,33 @@ Lead paragraph.
     ).toHaveAttribute('id', 'open-positions');
   });
 
-  it('renders section navigation and self-links for the real about markdown', () => {
+  it('does not render section navigation when the real about markdown has no sections', () => {
     const sectionTitles = getActualSectionTitles(aboutMarkdown);
     const { container } = render(<AboutContent markdown={aboutMarkdown} />);
-    const nav = screen.getByRole('navigation', { name: 'About sections' });
 
-    expect(within(nav).getAllByRole('link')).toHaveLength(sectionTitles.length);
-
-    for (const title of sectionTitles) {
-      const headingId = createHeadingId(title);
-      const heading = screen.getByRole('heading', { name: title });
-
-      expect(heading).toHaveAttribute('id', headingId);
-      expect(within(nav).getByRole('link', { name: title })).toHaveAttribute(
-        'href',
-        `#${headingId}`,
-      );
-      expect(
-        container.querySelector(`h2#${headingId} > a[href="#${headingId}"]`),
-      ).toBeTruthy();
-    }
+    expect(sectionTitles).toEqual([]);
+    expect(
+      screen.queryByRole('navigation', { name: 'About sections' }),
+    ).not.toBeInTheDocument();
+    expect(container.querySelectorAll('.about-section')).toHaveLength(0);
   });
 
-  it('renders matching hash links and heading ids into static markup', () => {
+  it('does not emit old Open Positions anchors in static about markup', () => {
     const html = renderToStaticMarkup(
       <AboutContent markdown={aboutMarkdown} />,
     );
 
-    expect(html).toContain('href="#open-positions"');
-    expect(html).toContain('id="open-positions"');
-    expect(html).toContain('href="#open-positions"');
-    expect(html).toContain('id="open-positions"');
+    expect(html).not.toContain('href="#open-positions"');
+    expect(html).not.toContain('id="open-positions"');
   });
 
-  it('supports same-page hash navigation from section links', async () => {
+  it('does not expose hash navigation when the real about markdown has no sections', () => {
     window.history.replaceState({}, '', '/about/');
-
     render(<AboutContent markdown={aboutMarkdown} />);
 
-    const nav = screen.getByRole('navigation', { name: 'About sections' });
-    const navLink = within(nav).getByRole('link', {
-      name: 'Open Positions',
-    });
-
-    navLink.click();
-
-    await waitFor(() => {
-      expect(window.location.hash).toBe('#open-positions');
-    });
-    expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Open Positions',
-    );
-
-    const heading = screen.getByRole('heading', { name: 'Open Positions' });
-    const permalink = within(heading).getByRole('link', {
-      name: 'Open Positions',
-    });
-
-    permalink.click();
-
-    await waitFor(() => {
-      expect(window.location.hash).toBe('#open-positions');
-    });
-    expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Open Positions',
-    );
+    expect(
+      screen.queryByRole('navigation', { name: 'About sections' }),
+    ).not.toBeInTheDocument();
+    expect(window.location.hash).toBe('');
   });
 });

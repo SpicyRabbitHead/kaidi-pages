@@ -9,9 +9,9 @@ describe('about data', () => {
     expect(aboutMarkdown).toContain('Trustworthy AI');
     expect(aboutMarkdown).toContain('Northeastern University');
   });
-  it('contains recruiting information', () => {
-    expect(aboutMarkdown).toContain('# Open Positions');
-    expect(aboutMarkdown).toContain('Two postdocs and five PhD positions');
+  it('keeps recruiting information on the homepage instead of biography', () => {
+    expect(aboutMarkdown).not.toContain('# Open Positions');
+    expect(aboutMarkdown).not.toContain('Two postdocs and five PhD positions');
   });
   it('contains valid markdown links', () => {
     expect(aboutMarkdown.match(/\[.+?\]\(.+?\)/g)).not.toBeNull();

@@ -32,7 +32,6 @@ describe('Navigation', () => {
     render(<Navigation />);
     for (const label of [
       'About',
-      'Academic CV',
       'Publications',
       'Group',
       'Teaching',
@@ -42,12 +41,5 @@ describe('Navigation', () => {
     expect(
       screen.queryByRole('link', { name: 'News' }),
     ).not.toBeInTheDocument();
-  });
-  it('marks nested academic routes active', () => {
-    mockPathname.mockReturnValue('/resume/skills');
-    render(<Navigation />);
-    expect(screen.getByRole('link', { name: 'Academic CV' })).toHaveClass(
-      'active',
-    );
   });
 });
