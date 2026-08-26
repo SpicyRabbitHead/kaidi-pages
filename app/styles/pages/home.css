@@ -56,6 +56,32 @@
   text-wrap: pretty;
 }
 
+.hero-open-positions {
+  max-width: 46ch;
+  margin: 0 0 2rem;
+  padding-top: 1rem;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.hero-open-positions h2 {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-fg-bold);
+}
+
+.hero-open-positions p {
+  margin: 0;
+  color: var(--color-fg);
+  line-height: var(--leading-snug);
+}
+
+.hero-open-positions a {
+  color: var(--color-accent);
+}
 .hero-highlight {
   color: var(--color-accent);
   font-weight: var(--font-weight-medium);

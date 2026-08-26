@@ -8,6 +8,9 @@ describe('academic information architecture', () => {
     render(<HomePage />);
     const section = screen.getByRole('region', { name: 'Recent News' });
     expect(section.querySelectorAll('.home-news-list li')).toHaveLength(5);
+    expect(
+      screen.getByRole('heading', { name: 'Open Positions' }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'View all' })).toHaveAttribute(
       'href',
       '/news',

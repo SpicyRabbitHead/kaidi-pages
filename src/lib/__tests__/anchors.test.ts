@@ -25,8 +25,8 @@ describe('createHeadingId', () => {
   });
   it('keeps the real about section ids stable', () => {
     const titles = getAboutSectionTitles(aboutMarkdown);
-    expect(titles).toEqual(['Open Positions']);
-    expect(titles.map(createHeadingId)).toEqual(['open-positions']);
+    expect(titles).toEqual([]);
+    expect(titles.map(createHeadingId)).toEqual([]);
   });
 });
 
