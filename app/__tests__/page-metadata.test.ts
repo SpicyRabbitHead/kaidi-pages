@@ -5,6 +5,7 @@ import { getPostSlugs } from '@/lib/posts';
 import { AUTHOR_NAME, SHARE_IMAGE_PATH, SITE_URL } from '@/lib/utils';
 import { metadata as aboutMetadata } from '../about/page';
 import { metadata as contactMetadata } from '../contact/page';
+import { metadata as membersMetadata } from '../members/page';
 import { metadata as notFoundMetadata } from '../not-found';
 import { metadata as projectsMetadata } from '../projects/page';
 import { metadata as resumeMetadata } from '../resume/page';
@@ -24,6 +25,7 @@ describe('page metadata', () => {
     ['resume', resumeMetadata, `${SITE_URL}/resume/`],
     ['stats', statsMetadata, `${SITE_URL}/stats/`],
     ['writing', writingMetadata, `${SITE_URL}/writing/`],
+    ['members', membersMetadata, `${SITE_URL}/members/`],
   ])('sets page-specific open graph metadata for %s', (_, metadata, url) => {
     expect(metadata.openGraph?.url).toBe(url);
     expect(metadata.openGraph?.description).toBe(metadata.description);
@@ -39,6 +41,7 @@ describe('page metadata', () => {
     ['resume', resumeMetadata],
     ['stats', statsMetadata],
     ['writing', writingMetadata],
+    ['members', membersMetadata],
   ])('sets page-specific twitter metadata for %s', (_, metadata) => {
     expect(metadata.twitter?.description).toBe(metadata.description);
     expect(metadata.twitter?.title).toBe(`${metadata.title} | ${AUTHOR_NAME}`);
@@ -56,6 +59,7 @@ describe('page metadata', () => {
     ['resume', resumeMetadata],
     ['stats', statsMetadata],
     ['writing', writingMetadata],
+    ['members', membersMetadata],
     ['404', notFoundMetadata],
   ])('declares the share card on %s', (_, metadata) => {
     const ogImages = metadata.openGraph?.images;
@@ -77,6 +81,7 @@ describe('page metadata', () => {
     ['resume', resumeMetadata, `${SITE_URL}/resume/`],
     ['stats', statsMetadata, `${SITE_URL}/stats/`],
     ['writing', writingMetadata, `${SITE_URL}/writing/`],
+    ['members', membersMetadata, `${SITE_URL}/members/`],
   ])('declares a canonical url for %s', (_, metadata, url) => {
     expect(metadata.alternates?.canonical).toBe(url);
   });
