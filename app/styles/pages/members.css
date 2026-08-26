@@ -1,0 +1,154 @@
+/* ========================================
+   MEMBERS PAGE
+   Editorial group directory inspired by a research-lab people page.
+   ======================================== */
+
+.members-page {
+  padding-bottom: 2rem;
+}
+
+.members-header {
+  padding: 2.75rem 0 2rem;
+}
+
+.members-header .page-title {
+  margin: 0;
+  font-size: var(--text-3xl);
+}
+
+.members-section {
+  padding: 2rem 0 2.75rem;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.members-section h2 {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+  line-height: var(--leading-tight);
+}
+
+.members-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+  border-top: var(--rule) solid var(--color-border);
+}
+
+.member-card {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 1.25rem;
+  min-width: 0;
+  padding: 1.375rem 0;
+  border-bottom: var(--rule) solid var(--color-border);
+}
+
+.member-card-image {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  border-radius: var(--radius-xs);
+  object-fit: cover;
+  object-position: center;
+  background: var(--color-surface-subtle);
+  filter: saturate(0.9) contrast(1.02);
+}
+
+.member-card-content {
+  min-width: 0;
+  align-self: center;
+}
+
+.member-card-name {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0;
+  line-height: var(--leading-tight);
+}
+
+.member-card-name a {
+  color: var(--color-fg-bold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25rem;
+  background-image: none;
+}
+
+.member-card-name a:hover,
+.member-card-name a:focus-visible {
+  color: var(--color-accent);
+}
+
+.member-card-meta {
+  margin: 0 0 0.55rem;
+  color: var(--color-fg);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+}
+
+.member-card-homepage {
+  display: inline-block;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wide);
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: none;
+}
+
+.member-card-homepage:hover,
+.member-card-homepage:focus-visible {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.member-card-homepage:focus-visible,
+.member-card-name a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .members-list {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .members-header {
+    padding: 2rem 0 1.5rem;
+  }
+
+  .members-header .page-title {
+    font-size: var(--text-2xl);
+  }
+
+  .members-section {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .members-section h2 {
+    margin-bottom: 1rem;
+    font-size: var(--text-lg);
+  }
+
+  .member-card {
+    grid-template-columns: 5rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .member-card-image {
+    width: 5rem;
+    height: 5rem;
+  }
+}
