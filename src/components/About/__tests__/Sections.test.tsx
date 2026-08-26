@@ -70,7 +70,7 @@ Lead paragraph.
 
 - Built a thing.
 
-# Travel / Geography
+# Open Positions
 
 - Went somewhere.`}
       />,
@@ -80,8 +80,8 @@ Lead paragraph.
       screen.getByRole('heading', { name: 'Some History' }),
     ).toHaveAttribute('id', 'some-history');
     expect(
-      screen.getByRole('heading', { name: 'Travel / Geography' }),
-    ).toHaveAttribute('id', 'travel-geography');
+      screen.getByRole('heading', { name: 'Open Positions' }),
+    ).toHaveAttribute('id', 'open-positions');
   });
 
   it('renders section navigation and self-links for the real about markdown', () => {
@@ -111,10 +111,10 @@ Lead paragraph.
       <AboutContent markdown={aboutMarkdown} />,
     );
 
-    expect(html).toContain('href="#some-history"');
-    expect(html).toContain('id="some-history"');
-    expect(html).toContain('href="#travel-geography"');
-    expect(html).toContain('id="travel-geography"');
+    expect(html).toContain('href="#open-positions"');
+    expect(html).toContain('id="open-positions"');
+    expect(html).toContain('href="#open-positions"');
+    expect(html).toContain('id="open-positions"');
   });
 
   it('supports same-page hash navigation from section links', async () => {
@@ -124,30 +124,30 @@ Lead paragraph.
 
     const nav = screen.getByRole('navigation', { name: 'About sections' });
     const navLink = within(nav).getByRole('link', {
-      name: 'Travel / Geography',
+      name: 'Open Positions',
     });
 
     navLink.click();
 
     await waitFor(() => {
-      expect(window.location.hash).toBe('#travel-geography');
+      expect(window.location.hash).toBe('#open-positions');
     });
     expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Travel / Geography',
+      'Open Positions',
     );
 
-    const heading = screen.getByRole('heading', { name: 'Fun Facts' });
+    const heading = screen.getByRole('heading', { name: 'Open Positions' });
     const permalink = within(heading).getByRole('link', {
-      name: 'Fun Facts',
+      name: 'Open Positions',
     });
 
     permalink.click();
 
     await waitFor(() => {
-      expect(window.location.hash).toBe('#fun-facts');
+      expect(window.location.hash).toBe('#open-positions');
     });
     expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Fun Facts',
+      'Open Positions',
     );
   });
 });

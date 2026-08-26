@@ -16,8 +16,8 @@ import { createPageMetadata } from '@/lib/metadata';
 import { AUTHOR_NAME, SITE_URL } from '@/lib/utils';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Resume',
-  description: `${AUTHOR_NAME}'s Resume. OpenAI, Promptfoo, Smile ID, Arthena, Matroid, Stanford ICME, YC alum.`,
+  title: 'Academic CV',
+  description: `${AUTHOR_NAME}'s academic CV, including appointments, education, research interests, and teaching.`,
   path: '/resume/',
 });
 
@@ -26,46 +26,37 @@ export default function ResumePage() {
     <PageWrapper>
       <section className="resume-page">
         <header className="resume-header">
-          <h1 className="resume-title">Resume</h1>
+          <h1 className="resume-title">Academic CV</h1>
           <p className="resume-summary">
-            Engineering leader with 15+ years building products across AI,
-            security, and infrastructure. I&apos;m currently a Member of the
-            Technical Staff at OpenAI, working on Promptfoo and Codex Security.
-            I help secure AI systems and use AI to find software
-            vulnerabilities. I co-founded Promptfoo before it joined OpenAI in
-            2026. Stanford MS, YC alum, previously VP Engineering.
+            {profile.name} is an Associate Professor at City University of Hong
+            Kong and Deputy Director of HKAI-Sci. His research spans trustworthy
+            AI, formal verification, adversarial attacks, and uncertainty
+            quantification.
           </p>
-          {/* Print-only, but real markup rather than CSS `content`, so it is
-              selectable, linkable, and reads from the shared profile. The
-              screen layout carries these in the footer, which print hides. */}
           <address className="resume-print-contact">
             <a href={`${SITE_URL}/`}>{SITE_URL.replace(/^https?:\/\//, '')}</a>
             <span aria-hidden="true"> · </span>
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
             <span aria-hidden="true"> · </span>
-            <a href="https://github.com/mldangelo">github.com/mldangelo</a>
+            <a href="https://github.com/Verified-Intelligence">
+              github.com/Verified-Intelligence
+            </a>
           </address>
         </header>
-
         <ResumeNav />
-
         <div className="resume-content">
           <section id="experience" className="resume-section">
             <Experience data={work} />
           </section>
-
           <section id="education" className="resume-section">
             <Education data={degrees} />
           </section>
-
           <section id="skills" className="resume-section">
             <Skills skills={skills} categories={categories} />
           </section>
-
           <section id="courses" className="resume-section">
             <Courses data={courses} />
           </section>
-
           <section id="references" className="resume-section">
             <References />
           </section>

@@ -1,77 +1,59 @@
 import type { Metadata } from 'next';
 
-import Cell from '@/components/Projects/Cell';
-import { SchemaGraph } from '@/components/Schema';
 import PageWrapper from '@/components/Template/PageWrapper';
-import data from '@/data/projects';
+import { groupSections } from '@/data/group';
 import { createPageMetadata } from '@/lib/metadata';
-import {
-  breadcrumbNode,
-  collectionPageNode,
-  HOME_URL,
-  SITE_URL,
-} from '@/lib/schema';
-import { AUTHOR_NAME } from '@/lib/utils';
 
-const PROJECTS_URL = `${SITE_URL}/projects/`;
-
-const PROJECTS_DESCRIPTION = `Early projects and experiments from ${AUTHOR_NAME} (2015 and earlier).`;
-
+const DESCRIPTION =
+  'Kaidi Xu research group, current positions, alumni, and recruitment information.';
 export const metadata: Metadata = createPageMetadata({
-  title: 'Archive',
-  description: PROJECTS_DESCRIPTION,
+  title: 'Group',
+  description: DESCRIPTION,
   path: '/projects/',
 });
 
-export default function ProjectsPage() {
-  const featuredProjects = data.filter((p) => p.featured);
-  const otherProjects = data.filter((p) => !p.featured);
-
+export default function GroupPage() {
   return (
     <PageWrapper>
-      <SchemaGraph
-        nodes={[
-          collectionPageNode({
-            url: PROJECTS_URL,
-            name: 'Archive',
-            description: PROJECTS_DESCRIPTION,
-            hasBreadcrumb: true,
-          }),
-          breadcrumbNode(PROJECTS_URL, [
-            { name: 'Home', url: HOME_URL },
-            { name: 'Archive', url: PROJECTS_URL },
-          ]),
-        ]}
-      />
-      <section className="projects-page">
+      <section className="projects-page group-page">
         <header className="projects-header">
-          <h1 className="page-title">Archive</h1>
+          <h1 className="page-title">Group</h1>
           <p className="page-subtitle">
-            Early projects and experiments from my student years
+            Research group and recruitment information.
           </p>
         </header>
-
-        {featuredProjects.length > 0 && (
-          <section className="projects-featured">
-            <h2 className="projects-section-title">Hackathons &amp; Awards</h2>
-            <div className="projects-grid projects-grid--featured">
-              {featuredProjects.map((project) => (
-                <Cell data={project} key={project.title} />
-              ))}
-            </div>
-          </section>
+        {groupSections.length > 0 ? (
+          groupSections.map((section) => (
+            <section className="people-section" key={section.title}>
+              <h2 className="projects-section-title">{section.title}</h2>
+              <div className="member-list">
+                {section.members.map((member) => (
+                  <article className="member" key={member.name}>
+                    <div>
+                      <h3>{member.name}</h3>
+                      <p className="member-meta">
+                        {member.role} · Joined {member.joined}
+                      </p>
+                      <p>{member.research}.</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))
+        ) : (
+          <p className="group-empty">
+            Member profiles will be added as they are confirmed.
+          </p>
         )}
-
-        {otherProjects.length > 0 && (
-          <section className="projects-other">
-            <h2 className="projects-section-title">Side Projects</h2>
-            <div className="projects-grid">
-              {otherProjects.map((project) => (
-                <Cell data={project} key={project.title} />
-              ))}
-            </div>
-          </section>
-        )}
+        <section className="section recruiting">
+          <h2>Join the group</h2>
+          <p>
+            We are seeking highly motivated students and postdoctoral
+            researchers with strong backgrounds in deep learning. Fully
+            supported positions are available for Spring and Fall 2027.
+          </p>
+        </section>
       </section>
     </PageWrapper>
   );

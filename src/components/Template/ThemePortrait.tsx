@@ -6,13 +6,6 @@ interface ThemePortraitProps {
   priority?: boolean;
 }
 
-/**
- * Portrait image component.
- *
- * Uses native <img> instead of next/image to:
- * - Avoid shipping next/image runtime for static export
- * - Reduce client-side JavaScript bundle
- */
 export default function ThemePortrait({
   width,
   height,
@@ -20,9 +13,9 @@ export default function ThemePortrait({
 }: ThemePortraitProps) {
   return (
     <span className="theme-portrait">
-      {/* biome-ignore lint/performance/noImgElement: Using native img to avoid next/image runtime overhead for static export */}
+      {/* biome-ignore lint/performance/noImgElement: Native img keeps static export lightweight. */}
       <img
-        src={withBasePath('/images/me.jpg')}
+        src={withBasePath('/images/kaidi_photo_2025.jpg')}
         alt={AUTHOR_NAME}
         width={width}
         height={height}

@@ -1,10 +1,7 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faAngellist } from '@fortawesome/free-brands-svg-icons/faAngellist';
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF';
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter';
+import { faGoogleScholar } from '@fortawesome/free-brands-svg-icons/faGoogleScholar';
+import { faBuilding } from '@fortawesome/free-regular-svg-icons/faBuilding';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons/faEnvelope';
 
 import profile from './profile.json';
@@ -17,41 +14,26 @@ export interface ContactItem {
 
 const data: ContactItem[] = [
   {
-    link: 'https://www.linkedin.com/in/michaelldangelo',
-    label: 'LinkedIn',
-    icon: faLinkedinIn,
+    link: 'https://scholar.google.com/citations?hl=en&user=lYK0wlsAAAAJ',
+    label: 'Google Scholar',
+    icon: faGoogleScholar,
   },
   {
-    link: 'https://github.com/mldangelo',
+    link: 'https://github.com/Verified-Intelligence',
     label: 'GitHub',
     icon: faGithub,
   },
   {
-    link: 'https://x.com/dangelosaurus',
-    label: 'X',
-    icon: faTwitter,
+    link: 'https://www.ds.cityu.edu.hk/',
+    label: 'CityU Data Science',
+    icon: faBuilding,
   },
   {
-    link: 'https://angel.co/michael-d-angelo',
-    label: 'Angel List',
-    icon: faAngellist,
+    link: 'https://www.cityu.edu.hk/hkai-sci/',
+    label: 'HKAI-Sci',
+    icon: faBuilding,
   },
-  {
-    link: 'https://www.instagram.com/dangelosaurus/',
-    label: 'Instagram',
-    icon: faInstagram,
-  },
-  {
-    link: 'https://facebook.com/d',
-    label: 'Facebook',
-    icon: faFacebookF,
-  },
-  {
-    // One public address, shared with the contact CTA and JSON-LD.
-    link: `mailto:${profile.email}`,
-    label: 'Email',
-    icon: faEnvelope,
-  },
+  { link: `mailto:${profile.email}`, label: 'Email', icon: faEnvelope },
 ];
 
 export default data;

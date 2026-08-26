@@ -93,15 +93,15 @@ describe('personNode', () => {
   it('uses author name and split given/family names', () => {
     const node = personNode();
     expect(node.name).toBe(AUTHOR_NAME);
-    expect(node.givenName).toBe('Michael');
-    expect(node.familyName).toBe("D'Angelo");
+    expect(node.givenName).toBe('Kaidi');
+    expect(node.familyName).toBe('Xu');
   });
 
   it('exposes an ImageObject and social sameAs links', () => {
     const node = personNode();
     const image = node.image as Record<string, unknown>;
     expect(image['@type']).toBe('ImageObject');
-    expect(image.url).toBe(`${SITE_URL}/images/me.jpg`);
+    expect(image.url).toBe(`${SITE_URL}${SITE_IMAGE_PATH}`);
     expect(image.width).toBe(SITE_IMAGE_DIMENSIONS.width);
     expect(image.height).toBe(SITE_IMAGE_DIMENSIONS.height);
     expect(Array.isArray(node.sameAs)).toBe(true);
@@ -112,7 +112,7 @@ describe('personNode', () => {
     const node = personNode();
     const worksFor = node.worksFor as Record<string, unknown>;
     expect(worksFor['@type']).toBe('Organization');
-    expect(worksFor.name).toBe('OpenAI');
+    expect(worksFor.name).toBe('City University of Hong Kong');
     const alumniOf = node.alumniOf as Record<string, unknown>[];
     expect(alumniOf[0]['@type']).toBe('CollegeOrUniversity');
   });
