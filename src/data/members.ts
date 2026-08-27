@@ -28,8 +28,8 @@ const members: Member[] = [
     image: '/images/members/member-2.jpg',
     width: 800,
     height: 1000,
-    category: 'master',
-    position: "Master's Student",
+    category: 'phd',
+    position: "PhD Student",
     tenure: 'Joined 2025',
   },
   {
