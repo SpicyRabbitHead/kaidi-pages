@@ -19,7 +19,7 @@ const members: Member[] = [
     width: 800,
     height: 1120,
     category: 'phd',
-    position: 'PhD Student',
+    position: 'PhD',
     tenure: 'Joined 2025',
   },
   {
@@ -29,7 +29,7 @@ const members: Member[] = [
     width: 800,
     height: 1000,
     category: 'phd',
-    position: 'PhD Student',
+    position: 'PhD',
     tenure: 'Joined 2025',
   },
   {
@@ -38,9 +38,9 @@ const members: Member[] = [
     image: '/images/members/member-3.jpg',
     width: 800,
     height: 800,
-    category: 'alumni',
-    position: 'Ph.D.',
-    tenure: '2021–2025',
+    category: 'phd',
+    position: 'PhD',
+    tenure: 'Joined 2025',
   },
   {
     name: '林绍卿',
@@ -49,7 +49,7 @@ const members: Member[] = [
     width: 800,
     height: 800,
     category: 'phd',
-    position: 'PhD Student',
+    position: 'PhD',
     tenure: 'Joined 2025',
   },
   {
@@ -59,8 +59,18 @@ const members: Member[] = [
     width: 800,
     height: 1120,
     category: 'postdoc',
-    position: 'Postdoctoral Researcher',
+    position: 'Postdoc',
     tenure: 'Joined 2026',
+  },
+  {
+    name: 'Jinhao Duan',
+    homepage: 'https://jinhaoduan.github.io/',
+    image: '/images/members/jinhao-duan-square.jpg',
+    width: 400,
+    height: 400,
+    category: 'alumni',
+    position: 'Ph.D.',
+    tenure: '2021–2025',
   },
 ];
 
