@@ -29,7 +29,11 @@ const members: Member[] = [
     width: 800,
     height: 1000,
     category: 'phd',
+<<<<<<< HEAD
     position: 'PhD',
+=======
+    position: 'PhD Student',
+>>>>>>> origin/main
     tenure: 'Joined 2025',
   },
   {
