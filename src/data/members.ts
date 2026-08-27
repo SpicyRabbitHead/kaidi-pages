@@ -29,7 +29,7 @@ const members: Member[] = [
     width: 800,
     height: 1000,
     category: 'phd',
-    position: "PhD Student",
+    position: 'PhD Student',
     tenure: 'Joined 2025',
   },
   {
