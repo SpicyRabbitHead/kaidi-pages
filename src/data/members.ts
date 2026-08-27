@@ -38,7 +38,7 @@ const members: Member[] = [
     image: '/images/members/member-3.jpg',
     width: 800,
     height: 800,
-    category: 'alumni',
+    category: 'phd',
     position: 'PhD',
     tenure: '2021–2025',
   },
