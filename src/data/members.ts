@@ -40,7 +40,7 @@ const members: Member[] = [
     height: 800,
     category: 'phd',
     position: 'PhD',
-    tenure: '2021–2025',
+    tenure: 'Joined 2025',
   },
   {
     name: '林绍卿',
