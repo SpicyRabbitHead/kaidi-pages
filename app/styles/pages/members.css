@@ -37,6 +37,17 @@
   border-top: var(--rule) solid var(--color-border);
 }
 
+.members-empty {
+  margin: 0;
+  padding: 1rem 0;
+  border-top: var(--rule) solid var(--color-border);
+  color: var(--color-fg-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
 .member-card {
   display: grid;
   grid-template-columns: 6rem minmax(0, 1fr);

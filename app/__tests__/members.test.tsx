@@ -46,6 +46,23 @@ describe('members page', () => {
         ),
       ).toBeInTheDocument();
     });
+
+    Object.entries(expectedGroups).forEach(([category, title]) => {
+      const group = screen.getByRole('region', { name: title });
+      const groupMembers = members.filter(
+        (member) => member.category === category,
+      );
+
+      if (groupMembers.length === 0) {
+        expect(
+          within(group).getByText('No members listed yet.'),
+        ).toBeInTheDocument();
+      } else {
+        expect(group.querySelectorAll('.member-card')).toHaveLength(
+          groupMembers.length,
+        );
+      }
+    });
   });
 
   it('keeps portrait alt text paired with each member name', () => {
