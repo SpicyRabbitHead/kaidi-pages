@@ -58,8 +58,6 @@ export default function MembersPage() {
             (member) => member.category === group.key,
           );
 
-          if (groupMembers.length === 0) return null;
-
           return (
             <section
               className="members-section"
@@ -67,11 +65,15 @@ export default function MembersPage() {
               key={group.key}
             >
               <h2 id={'members-' + group.key}>{group.title}</h2>
-              <div className="members-list">
-                {groupMembers.map((member) => (
-                  <MemberCard key={member.homepage} member={member} />
-                ))}
-              </div>
+              {groupMembers.length > 0 ? (
+                <div className="members-list">
+                  {groupMembers.map((member) => (
+                    <MemberCard key={member.homepage} member={member} />
+                  ))}
+                </div>
+              ) : (
+                <p className="members-empty">No members listed yet.</p>
+              )}
             </section>
           );
         })}
